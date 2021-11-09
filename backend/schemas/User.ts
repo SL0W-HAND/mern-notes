@@ -1,4 +1,4 @@
-import { Schema,model } from "mongoose";
+import { Schema,model, Document } from "mongoose";
 
 const UserSchema = new Schema({
     username: {
@@ -25,5 +25,16 @@ UserSchema.methods.matchPassword = async function (password) {
   }
   return false;
 };
+
+export interface typeUser extends Document {
+  username: string;
+  email: string;
+  password: string;
+  numberOfNotes: number;
+  notes: any;
+  _id: string;
+  matchPassword: (password: string) => Promise<boolean>;
+}
+ 
 
 export default model("User", UserSchema);

@@ -10,13 +10,15 @@ passport.use(new LocalStrategy({
     async (email, password, done) => {
         // Match Email's User
         const user = await User.findOne({ email: email });
-  
+        console.log(user)
         if (!user) {
           return done(null, false, { message: "Not User found." });
         } else {
           // Match Password's User
           const match = await user.matchPassword(password);
           if (match) {
+
+            //dont expose password
             return done(null, user);
           } else {
             return done(null, false, { message: "Incorrect Password." });

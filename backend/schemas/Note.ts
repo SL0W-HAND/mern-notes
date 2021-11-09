@@ -1,4 +1,5 @@
-import { Schema,model } from "mongoose";
+import { Schema,model, Document } from "mongoose";
+import { Interface } from "readline";
 
 const NoteSchema = new Schema(
   {
@@ -10,11 +11,18 @@ const NoteSchema = new Schema(
       type: String,
       required: true,
     },
-    user: {
+    userId: {
       type: String,
       required: true,
     },
   }
 );
+
+export interface typeNote extends Document {
+  title: string;
+  description: string;
+  userId: string;
+}
+
 
 export default model("Note", NoteSchema);

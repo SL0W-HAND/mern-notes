@@ -5,6 +5,7 @@ import passport from 'passport';
 import morgan from 'morgan';
 import cors from 'cors';
 import { connect } from 'mongoose';
+import connectMongo from 'connect-mongo';
 
 import  config  from './config/config';
 import './config/passport'

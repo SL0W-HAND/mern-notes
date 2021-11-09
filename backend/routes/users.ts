@@ -8,11 +8,7 @@ import {singUp, login} from '../controllers/userController';
 
 router.post("/singup", singUp);
 
-router.post("/login",login,function(req,res){
-    res.json({
-        message: "login success"
-    })
-});
+router.post("/login",login);
 
 
 
