@@ -3,15 +3,22 @@ import passport from 'passport';
 
 import  User,{typeUser}  from '../schemas/User';
 
-//import Note  from '../schemas/Note';
+
 
 export const login = async (req:Request, res:Response,next:NextFunction) =>{
+
     passport.authenticate('local', (err:Error, user:typeUser, info:any) => {
         if (err) { return next(err); }
-        if (!user) { return res.status(401).json({message: 'Usuario o contraseña incorrectos'}); }
+
+        if (!user) { 
+            res.status(401).json({message: 'Usuario o contraseña incorrectos'}); 
+        }
         req.logIn(user, (err) => {
-            if (err) { return next(err); }
-            return res.status(200).json({message: 'Login exitoso'});
+            if (err) { 
+                return next(err); 
+            }
+            //remove the password and sensitive data from the user object
+         res.status(200).json({message: 'Login exitoso', user: user});
         });
     }) (req, res, next);
 }
@@ -23,8 +30,7 @@ export const singUp = async (req: Request, res: Response) => {
     if (!email || !password || !name) {
         res.status(400).send({ error: 'Fill all fields' });
     }
-
-    //view if the user already exists
+    //view if the user already exists for unique email
     
     //hash password
     const user = new User({ 
@@ -37,7 +43,6 @@ export const singUp = async (req: Request, res: Response) => {
 
      //auto login after singup
 
-     res.send({ user });
 }
 
 export const logOut = async (req: Request, res: Response) => {

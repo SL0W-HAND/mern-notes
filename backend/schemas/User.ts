@@ -31,7 +31,7 @@ export interface typeUser extends Document {
   email: string;
   password: string;
   numberOfNotes: number;
-  notes: any;
+  notes: string[];
   _id: string;
   matchPassword: (password: string) => Promise<boolean>;
 }

@@ -3,10 +3,11 @@ import passport from 'passport';
 
 const router = Router();
 
+
 import {singUp, login} from '../controllers/userController';
 
 
-router.post("/singup", singUp);
+router.post("/singup",singUp);
 
 router.post("/login",login);
 

@@ -2,11 +2,19 @@ import { Router } from 'express';
 
 const router = Router();
 
-import {getNote} from '../controllers/noteController';
+import { isAuthenticated } from '../helpers/auth';
+
+import {getNote, createNote, updateNote, deleateNote, getAllNotes} from '../controllers/noteController';
 
 
-router.get('/note/:id',getNote)
+router.get('/note/:id',isAuthenticated,getNote)
 
+router.get('/notes',isAuthenticated, getAllNotes)
 
+router.post('/update_note/:id',isAuthenticated,updateNote)
+
+router.post('/create_note',isAuthenticated,createNote)
+
+router.delete('/deleate_note/:id',isAuthenticated,deleateNote)
 
 export default router;
