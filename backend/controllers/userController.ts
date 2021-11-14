@@ -32,7 +32,7 @@ export const login = async (
 	})(req, res, next);
 };
 
-export const singUp = async (req: Request, res: Response) => {
+export const signUp = async (req: Request, res: Response) => {
 	const { email, password, name } = req.body;
 
 	if (!email || !password || !name) {

@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
@@ -8,12 +7,14 @@ import { createStore, compose } from 'redux';
 
 import reducer from './reducer/index'
 const initialState = {
-	apiUrl: 'http://localhost:3000',
+	apiUrl: 'http://localhost:4000',
+  user:false
 };
 
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(reducer, initialState);
+const store = createStore(reducer, initialState,composeEnhancers());
 
 ReactDOM.render(
   <React.StrictMode>

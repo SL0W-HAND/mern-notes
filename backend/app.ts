@@ -19,12 +19,13 @@ const app = express();
 
 //conect to db
 try {
-	connect(config.databaseUrl.toString(), {
-		connectTimeoutMS: 10000,
-	});
+	//error handling
+	connect('mongodb://localhost:27017/notes1');
+	/*
 	if (connection.readyState !== 1) {
 		throw new Error(`Failed to connect to server: ${config.databaseUrl} `);
 	}
+	*/
 	console.log('connected to database:', connection.name);
 } catch (error) {
 	console.log('error connecting to mongodb');

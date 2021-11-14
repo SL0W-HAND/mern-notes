@@ -1,20 +1,27 @@
 import axios from 'axios'
 import React, {useState} from 'react'
 import Navbar from '../components/Navbar'
+import { connect } from 'react-redux'
 
-const SingUp = () => {
+
+
+const SingUp = (props) => {
+    
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
 
-    const handleSubmit = (event:any) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:5000/api/users/signup', {
+        axios.post(`${props.apiUrl}/signup`, {
             email: email,
             password: password,
             name:  name
         }).then(res => {
+            if(res.status === 201){
+                
+            }
             console.log(res.data)
         }
         ).catch(err => {
@@ -22,7 +29,7 @@ const SingUp = () => {
         }
         )
     }
-    const handleChange = (e:any) => {
+    const handleChange = (e) => {
         switch(e.target.name){
             case 'email':
                 setEmail(e.target.value)
@@ -47,6 +54,7 @@ const SingUp = () => {
                     <input type="text" placeholder="Name" name='name' onChange={handleChange}/>
                     <input type="text" placeholder="Email" name='email' onChange={handleChange}/>
                     <input type="password" placeholder="Password" name='password' onChange={handleChange}/>
+                    <button type='submit'>Sing Up</button>
                 </form>
             </section>
             
@@ -54,4 +62,12 @@ const SingUp = () => {
     )
 }
 
-export default SingUp
+const mapStateToProps = (state) => {
+    return {
+        apiUrl: state.apiUrl
+
+    }
+}
+
+
+export default connect(mapStateToProps,null)(SingUp) 

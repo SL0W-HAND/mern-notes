@@ -4,7 +4,7 @@ import passport from 'passport';
 const router = Router();
 
 import {
-	singUp,
+	signUp,
 	login,
 	deleteAccount,
 	logOut,
@@ -12,7 +12,7 @@ import {
 
 import { isAuthenticated } from '../helpers/auth';
 
-router.post('/singup', singUp);
+router.post('/signup', signUp);
 
 router.post('/login', login);
 
