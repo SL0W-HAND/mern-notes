@@ -1,0 +1,35 @@
+.Navbar {
+    width: 100vw;
+    height: 90px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    &__container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 900px;
+        a {
+            font-family: Dosis, "Source Sans Pro", "Helvetica Neue", Arial,
+                sans-serif;
+            font-size: 29px;
+            line-height: 40px;
+            font-weight: 500;
+            color: #273849;
+            text-decoration: none;
+        }
+        &_buttons {
+            a {
+                width: 40px;
+                height: 25px;
+                padding: 4px 5px;
+                border: 3px solid;
+                border-radius: 25px;
+                margin: 0 10px;
+            }
+        }
+    }
+}
